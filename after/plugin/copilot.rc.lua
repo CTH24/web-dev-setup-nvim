@@ -1,10 +1,11 @@
 -- copilot.lua
 
-
 local status, copilot = pcall(require, "copilot")
-if (not status) then return end
+if not status then
+    return
+end
 
-require('copilot').setup({
+require("copilot").setup({
     panel = {
         enabled = true,
         auto_refresh = false,
@@ -13,7 +14,7 @@ require('copilot').setup({
             jump_next = "]]",
             accept = "<CR>",
             refresh = "gr",
-            open = "<M-CR>"
+            open = "<M-CR>",
         },
     },
     suggestion = {
@@ -39,7 +40,7 @@ require('copilot').setup({
         cvs = false,
         ["."] = false,
     },
-    copilot_node_command = 'node', -- Node version must be < 18
+    copilot_node_command = "node", -- Node version must be < 18
     plugin_manager_path = vim.fn.stdpath("data") .. "/site/pack/packer",
     server_opts_overrides = {},
 })

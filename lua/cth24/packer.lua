@@ -2,48 +2,33 @@
 
 local status, packer = pcall(require, "packer")
 
-if (not status) then
+if not status then
     print("Packer is not installed")
     return
 end
 
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
 packer.startup(function(use)
-
-
     --------------------------------------------------------------------------------
     -- Packer
     --------------------------------------------------------------------------------
-    use 'wbthomason/packer.nvim'
 
+    use("wbthomason/packer.nvim")
 
-
-
-    --------------------------------------------------------------------------------
-    -- LSP
-    --------------------------------------------------------------------------------
-
-    use 'onsails/lspkind-nvim'
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/mason-lspconfig.nvim'
-    use 'glepnir/lspsaga.nvim'
-    use 'jose-elias-alvarez/null-ls.nvim'
-    use 'williamboman/mason.nvim'
-
-
-
+    use("tpope/vim-surround")
+    use("numToStr/Comment.nvim")
 
     --------------------------------------------------------------------------------
     -- Copilot
     --------------------------------------------------------------------------------
 
-    use {
+    use({
         "zbirenbaum/copilot.lua",
         event = { "VimEnter" },
         config = function()
             vim.defer_fn(function()
-                require('copilot').setup({
+                require("copilot").setup({
                     panel = {
                         enabled = true,
                         auto_refresh = true,
@@ -52,7 +37,7 @@ packer.startup(function(use)
                             jump_next = "]]",
                             accept = "<CR>",
                             refresh = "gr",
-                            open = "<M-CR>"
+                            open = "<M-CR>",
                         },
                     },
                     suggestion = {
@@ -77,144 +62,132 @@ packer.startup(function(use)
                         cvs = false,
                         ["."] = false,
                     },
-                    copilot_node_command = 'node', -- Node version must be < 18
+                    copilot_node_command = "node", -- Node version must be < 18
                     plugin_manager_path = vim.fn.stdpath("data") .. "/site/pack/packer",
                     server_opts_overrides = {},
                 })
             end, 100)
         end,
-    }
+    })
 
-    use {
+    use({
         "zbirenbaum/copilot-cmp",
         after = { "copilot.lua" },
         config = function()
-            require("copilot_cmp").setup {
+            require("copilot_cmp").setup({
                 method = "getCompletionsCycling",
-            }
-        end
-    }
-
-
-
+            })
+        end,
+    })
 
     --------------------------------------------------------------------------------
-    -- CMP
+    -- LuaSnip                                                                     -
     --------------------------------------------------------------------------------
 
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/nvim-cmp'
-
-
-
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
+    use("rafamadriz/friendly-snippets")
 
     --------------------------------------------------------------------------------
-    -- navic
+    -- LSP
     --------------------------------------------------------------------------------
 
-    use {
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
+    use("neovim/nvim-lspconfig")
+    use({ "glepnir/lspsaga.nvim", branch = "main" })
+    use("jose-elias-alvarez/typescript.nvim")
+    use("onsails/lspkind.nvim")
+
+    --------------------------------------------------------------------------------
+    -- Linting & Formatting                                                        -
+    --------------------------------------------------------------------------------
+
+    use("jose-elias-alvarez/null-ls.nvim")
+    use("jayp0521/mason-null-ls.nvim")
+
+    --------------------------------------------------------------------------------
+    -- CMP                                                                         -
+    --------------------------------------------------------------------------------
+
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-nvim-lsp")
+
+    --------------------------------------------------------------------------------
+    -- navic (Statusline)                                                          -
+    --------------------------------------------------------------------------------
+
+    use({
         "SmiteshP/nvim-navic",
-        requires = "neovim/nvim-lspconfig"
-    }
+        requires = "neovim/nvim-lspconfig",
+    })
 
-
-
-    --------------------------------------------------------------------------------
-    -- LuaSnip
-    --------------------------------------------------------------------------------
-
-
-    use 'L3MON4D3/LuaSnip'
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
-
-
-
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+    })
 
     --------------------------------------------------------------------------------
     -- nvim-web-devicons
     --------------------------------------------------------------------------------
 
-    use 'kyazdani42/nvim-web-devicons' -- File icons
-
-
-
+    use("kyazdani42/nvim-web-devicons") -- File icons
 
     --------------------------------------------------------------------------------
     -- nvim-autopairs
     --------------------------------------------------------------------------------
 
-    use 'windwp/nvim-autopairs'
-
-
-
+    use("windwp/nvim-autopairs")
 
     --------------------------------------------------------------------------------
     -- nvim-autopairs
     --------------------------------------------------------------------------------
 
-    use 'windwp/nvim-ts-autotag'
-
-
-
+    use("windwp/nvim-ts-autotag")
 
     --------------------------------------------------------------------------------
     -- nvim-colorizer
     --------------------------------------------------------------------------------
 
-    use 'norcalli/nvim-colorizer.lua'
-
-
-
+    use("norcalli/nvim-colorizer.lua")
 
     --------------------------------------------------------------------------------
     -- zen-mode
     --------------------------------------------------------------------------------
 
-    use 'folke/zen-mode.nvim'
-
-
-
+    use("folke/zen-mode.nvim")
 
     --------------------------------------------------------------------------------
     -- gitsigns
     --------------------------------------------------------------------------------
 
-    use 'lewis6991/gitsigns.nvim'
-
-
-
+    use("lewis6991/gitsigns.nvim")
 
     --------------------------------------------------------------------------------
     -- git
     --------------------------------------------------------------------------------
 
-    use 'dinhhuy258/git.nvim'
-    use 'tpope/vim-fugitive'
-
-
-
+    use("dinhhuy258/git.nvim")
+    use("tpope/vim-fugitive")
 
     --------------------------------------------------------------------------------
     -- telescope
     --------------------------------------------------------------------------------
 
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-file-browser.nvim'
-
-
-
+    use("nvim-lua/plenary.nvim")
+    use("nvim-telescope/telescope.nvim")
+    use("nvim-telescope/telescope-file-browser.nvim")
 
     --------------------------------------------------------------------------------
     -- wilder
     --------------------------------------------------------------------------------
 
-    use 'gelguy/wilder.nvim'
-    use 'romgrk/fzy-lua-native'
+    use("gelguy/wilder.nvim")
+    use("romgrk/fzy-lua-native")
     use({
         "rinx/nvim-ripgrep",
         config = function()
@@ -224,126 +197,96 @@ packer.startup(function(use)
         end,
     })
 
-
-
-
     --------------------------------------------------------------------------------
     -- alpha-nvim
     --------------------------------------------------------------------------------
 
-    use {
-        'goolord/alpha-nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
+    use({
+        "goolord/alpha-nvim",
+        requires = { "kyazdani42/nvim-web-devicons" },
         config = function()
-            require 'alpha'.setup(require 'alpha.themes.startify'.config)
-        end
-    }
-
-
-
+            require("alpha").setup(require("alpha.themes.startify").config)
+        end,
+    })
 
     --------------------------------------------------------------------------------
     -- Themes
     --------------------------------------------------------------------------------
 
-    use 'Shatur/neovim-ayu'
-    use 'ellisonleao/gruvbox.nvim'
-
-
-
+    use("Shatur/neovim-ayu")
+    use("ellisonleao/gruvbox.nvim")
 
     --------------------------------------------------------------------------------
     -- express_line
     --------------------------------------------------------------------------------
 
-    use 'tjdevries/express_line.nvim'
-
-
-
+    use("tjdevries/express_line.nvim")
 
     --------------------------------------------------------------------------------
     -- ToggleTerm
     --------------------------------------------------------------------------------
 
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup({
-            open_mapping = [[<c-\>]],
-            shell = vim.o.shell,
-            direction = "float",
-            winblend = 1,
-        })
-    end }
-
-
-
+    use({
+        "akinsho/toggleterm.nvim",
+        tag = "*",
+        config = function()
+            require("toggleterm").setup({
+                open_mapping = [[<c-\>]],
+                shell = vim.o.shell,
+                direction = "float",
+                winblend = 1,
+            })
+        end,
+    })
 
     --------------------------------------------------------------------------------
     -- WhichKey
     --------------------------------------------------------------------------------
 
-    use {
+    use({
         "folke/which-key.nvim",
         config = function()
-            require("which-key").setup {}
-        end
-    }
-
-
-
+            require("which-key").setup({})
+        end,
+    })
 
     --------------------------------------------------------------------------------
     -- nvim-transparent
     --------------------------------------------------------------------------------
 
-    use 'xiyaowong/nvim-transparent'
+    use("xiyaowong/nvim-transparent")
     require("transparent").setup({
         enable = true,
         extra_groups = {
-            'all'
+            "all",
         },
         exclude = {}, -- table: groups you don't want to clear
     })
-
-
-
 
     --------------------------------------------------------------------------------
     -- Fidget
     --------------------------------------------------------------------------------
 
-    use { 'j-hui/fidget.nvim',
+    use({
+        "j-hui/fidget.nvim",
         config = function()
-            require('fidget').setup()
-        end
-    }
-
-
-
+            require("fidget").setup()
+        end,
+    })
 
     --------------------------------------------------------------------------------
     -- PHPactor
     --------------------------------------------------------------------------------
-    
-    use 'phpactor/phpactor'
 
-
-
+    use("phpactor/phpactor")
 
     --------------------------------------------------------------------------------
     -- TMUX Navigation
     --------------------------------------------------------------------------------
 
     use("christoomey/vim-tmux-navigator")
-    use 'davidgranstrom/nvim-markdown-preview'
-
-
-
-
+    use("davidgranstrom/nvim-markdown-preview")
 end) -- packer.startup
-
-
-
-
 
 --------------------------------------------------------------------------------
 --  Autoload Plugins on Save                                                  --
@@ -352,6 +295,6 @@ end) -- packer.startup
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
   augroup end
 ]])
