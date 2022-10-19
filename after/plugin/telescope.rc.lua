@@ -35,7 +35,6 @@ telescope.setup {
             hijack_netrw = true,
             mappings = {
                 ["i"] = {
-                    ["<C-w>"] = function() vim.cmd('normal vbd') end,
                 },
                 ["n"] = {
                     ["n"] = fb_actions.create,

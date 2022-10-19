@@ -1,14 +1,12 @@
 -- keymap.lua
 
 
-
-
 --------------------------------------------------------------------------------
 --  Prepare for keymaps mapping                                                -
 --------------------------------------------------------------------------------
 
-local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
 
 
@@ -17,9 +15,27 @@ local map = vim.api.nvim_set_keymap
 --  Leader KEY
 --------------------------------------------------------------------------------
 
-map('n', '<Space>', '<Nop>', opts)
 vim.g.mapleader      = " "
 vim.g.maplocalleader = " "
+map('n', '<Space>', '<Nop>', opts)
+
+
+
+
+--------------------------------------------------------------------------------
+-- No Highlight                                                                -
+--------------------------------------------------------------------------------
+
+map('n', '<Leader>c', ':noh<CR>', opts)
+
+
+
+
+--------------------------------------------------------------------------------
+-- No yank with x                                                              -
+--------------------------------------------------------------------------------
+
+map("n", "x", '"_x', opts)
 
 
 
@@ -30,6 +46,16 @@ vim.g.maplocalleader = " "
 
 map('n', 'YY', 'gg<S-v>Gy', opts)
 
+
+
+
+
+--------------------------------------------------------------------------------
+-- Increase and Deincrease Numbers                                             -
+--------------------------------------------------------------------------------
+
+map("n", "<leader>+","<C-a>", opts)
+map("n", "<leader>-","<C-x>", opts)
 
 
 
@@ -47,7 +73,7 @@ map("i", "<C-c>", "<ESC>", opts)
 --  Find Files                                                                 -
 --------------------------------------------------------------------------------
 
-map("n", "<leader>j", "<cmd>Telescope fd<cr>", opts)
+map("n", "<leader>j", "<cmd>Telescope git_files<cr>", opts)
 map("n", "<leader>k", "<cmd>Telescope oldfiles<CR>", opts)
 map("n", "<leader>f", "<cmd>Telescope live_grep<cr>", opts)
 map("n", "<leader>w", "<cmd>Telescope lsp_workspace_symbols<cr>", opts)
@@ -57,10 +83,10 @@ map("n", "<leader>s", "<cmd>Telescope treesitter<cr>", opts)
 
 
 --------------------------------------------------------------------------------
---  Open Backlog                                                               -
+--  Open TODO.md                                                               -
 --------------------------------------------------------------------------------
 
-map("n", "<leader>/", "<cmd>vsp backlog.md<cr>", opts)
+map("n", "<leader>/", "<cmd>vsp TODO.md<cr>", opts)
 
 
 
@@ -115,7 +141,7 @@ map('n', '<leader>i', ':lua vim.lsp.buf.hover()<cr>', opts)
 --  GitHub Toogle AutoSuggestion                                               -
 --------------------------------------------------------------------------------
 
-map("n", "<leader>c", ":Copilot suggestion toggle_auto_trigger<CR>", opts)
+--map("n", "<leader>c", ":Copilot suggestion toggle_auto_trigger<CR>", opts)
 
 
 
@@ -124,8 +150,10 @@ map("n", "<leader>c", ":Copilot suggestion toggle_auto_trigger<CR>", opts)
 --  Workflow Development                                                       -
 --------------------------------------------------------------------------------
 
+map("n", "<leader>b", ":!/bin/bash ./build<CR>", opts)
 map("n", "<leader>r", ":!/bin/bash ./start<CR>", opts)
-map("n", "<leader>l", ":!/bin/bash ./show-logs<CR>", opts)
+map("n", "<leader>l", ":!/bin/bash ./logs<CR>", opts)
+map("n", "<leader>t", ":!/bin/bash ./terminal<CR>", opts)
 
 
 
@@ -135,3 +163,6 @@ map("n", "<leader>l", ":!/bin/bash ./show-logs<CR>", opts)
 --------------------------------------------------------------------------------
 
 map("n", "<leader>m", "<cmd>Telescope man_pages<CR>", opts)
+
+
+vim.keymap.set('n', '<C-w>o', '<cmd>ZenMode<cr>', { silent = true })

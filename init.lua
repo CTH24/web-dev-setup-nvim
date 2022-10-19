@@ -1,7 +1,10 @@
-require('cth24.base')
+-- init.lua
+
+require('cth24.options')
+require('cth24.colorsheme')
+
 require('cth24.highlights')
-require('cth24.keymaps')
-require('cth24.plugins')
+require('cth24.packer-plugins')
 
 local has = vim.fn.has
 local is_mac = has "macunix"
@@ -14,5 +17,4 @@ if is_win then
     require('cth24.windows')
 end
 
-vim.cmd('colorscheme ayu')
-vim.cmd [[ highlight! EndOfBuffer guibg=bg guifg=bg ]]
+require('cth24.keymaps')

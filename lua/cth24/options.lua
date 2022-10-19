@@ -1,12 +1,39 @@
+-- options.lua
+
 vim.cmd("autocmd!")
+
+
+--------------------------------------------------------------------------------
+-- UI                                                                          -
+--------------------------------------------------------------------------------
+
+vim.opt.termguicolors = true
+vim.cmd [[ autocmd VimResized * wincmd = ]]
+
+
+
+--------------------------------------------------------------------------------
+-- Line Numbers                                                                -
+--------------------------------------------------------------------------------
+
+vim.wo.number = true
+vim.opt.relativenumber = true
+
+
+
+
+--------------------------------------------------------------------------------
+-- Encoding                                                                    -
+--------------------------------------------------------------------------------
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 
-vim.wo.number = true
 
-vim.opt.relativenumber = true
+
+
+
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -31,11 +58,22 @@ vim.opt.swapfile = false
 vim.opt.mouse = "i"
 vim.o.ch = 0
 vim.opt.wrap = false
+
+vim.opt.iskeyword:append('-')
+
+
+
+-- backspace
 vim.opt.backspace = { 'start', 'eol', 'indent' }
+
 vim.opt.path:append { '**' }
 vim.opt.wildignore:append { '*/node_modules/*' }
+
+-- split windows
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+
 vim.opt.signcolumn = "yes"
 
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
@@ -86,4 +124,3 @@ vim.cmd [[ highlight! EndOfBuffer guibg=bg guifg=bg ]]
 
 
 -- AutoResize
-vim.cmd [[ autocmd VimResized * wincmd = ]]
