@@ -1,6 +1,6 @@
 local setup, comment = pcall(require, "Comment")
 if not setup then
-    print("Comment not found.")
+    print("Plugin: Comment not found.")
     return
 end
 

@@ -1,5 +1,9 @@
 # web-dev-setup-nvim
 
+## Plugin Management
+
+- https://github.com/wbthomason/packer.nvim
+
 ## Dashboard
 
 ## Keymap
@@ -16,7 +20,23 @@
 
 ## CMP
 
+- https://github.com/hrsh7th/nvim-cmp
+- https://github.com/hrsh7th/cmp-buffer
+- https://github.com/hrsh7th/cmp-path
+- https://github.com/hrsh7th/cmp-nvim-lsp
+
 ## LSP
+
+### Plugins
+
+- https://github.com/williamboman/mason.nvim
+- https://github.com/williamboman/mason-lspconfig.nvim
+- https://github.com/neovim/nvim-lspconfig
+- https://github.com/glepnir/lspsaga.nvim
+- https://github.com/onsails/lspkind.nvim
+- https://github.com/jose-elias-alvarez/typescript.nvim
+
+### Languages
 
 1. ansible
 2. bash
