@@ -1,5 +1,11 @@
 # web-dev-setup-nvim
 
+## Keymaps
+
+| Keymap    | Command             |
+| --------- | ------------------- |
+| <leader>e | :NvimTreeToggle<CR> |
+
 ## Plugin Management
 
 - https://github.com/wbthomason/packer.nvim
@@ -13,6 +19,8 @@
 ## Commenting
 
 ## File Explorer
+
+- https://github.com/nvim-tree/nvim-tree.lua
 
 ## Statusline
 

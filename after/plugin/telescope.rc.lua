@@ -95,17 +95,3 @@ vim.keymap.set("n", "<leader>h", function()
         cwd = telescope_buffer_dir(),
     })
 end)
-vim.keymap.set("n", "<leader>e", function()
-    telescope.extensions.file_browser.file_browser({
-        path = "%:p:h",
-        theme = "ivy",
-        height = 40,
-        cwd = telescope_buffer_dir(),
-        respect_gitignore = false,
-        hidden = true,
-        grouped = true,
-        previewer = true,
-        initial_mode = "false",
-        layout_config = { height = 40 },
-    })
-end)
