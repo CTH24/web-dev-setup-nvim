@@ -2,14 +2,13 @@
 
 ## Next Steps
 
-1. Nvim Tree
-2. Treesitter
-3. Git Integration
-4. Telescope
-5. Window Navigation
-6. Keymaps
-7. Essential Plugins
-8. Commenting
-9. Icons
-10. Statusline
-11. Colorsheme
+1. Treesitter
+2. Git Integration
+3. Telescope
+4. Window Navigation
+5. Keymaps
+6. Essential Plugins
+7. Commenting
+8. Icons
+9. Statusline
+10. Colorsheme
