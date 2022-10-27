@@ -18,9 +18,24 @@ null_ls.setup({
     sources = {
         --  to disable file types use
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-        formatting.prettier, -- js/ts formatter
-        formatting.stylua, -- lua formatter
+
+        diagnostics.markdownlint,
+        diagnostics.tidy, -- html linter
+        diagnostics.stylelint,
+        diagnostics.twigcs, -- twig linter
+        diagnostics.zsh, -- zsh linter
+        diagnostics.yamllint, -- yaml linter
+        diagnostics.jsonlint, -- json linter
         diagnostics.eslint_d, -- js/ts linter
+        diagnostics.php,
+        diagnostics.phpstan, -- php linter
+        diagnostics.psalm, -- php linter
+        --diagnostics.phpmd, -- php linter
+        diagnostics.ansiblelint,
+        formatting.prettier, -- js/ts formatter
+        formatting.phpcbf, -- php formatter
+        formatting.phpcsfixer, -- php formatter
+        formatting.stylua, -- lua formatter
     },
     -- configure format on save
     on_attach = function(current_client, bufnr)

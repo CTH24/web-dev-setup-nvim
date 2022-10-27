@@ -8,7 +8,7 @@
 
 ## Plugin Management
 
-- https://github.com/wbthomason/packer.nvim
+- [Packer: "https://github.com/wbthomason/packer.nvim"]
 
 ## Dashboard
 

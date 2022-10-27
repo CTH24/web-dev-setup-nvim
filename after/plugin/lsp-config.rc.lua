@@ -136,7 +136,6 @@ lspconfig["phpactor"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
-
 lspconfig["pyright"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -146,12 +145,6 @@ lspconfig["ruby_ls"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
-
-lspconfig["rust_analyzer"].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
-
 lspconfig["sqlls"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
