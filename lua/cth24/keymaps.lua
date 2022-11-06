@@ -87,7 +87,8 @@ map("n", "<leader>gf", "<cmd>G fetch<cr>", opts)
 map("n", "<leader>ga", "<cmd>G add .<cr>", opts)
 map("n", "<leader>gc", "<cmd>G commit<cr>", opts)
 map("n", "<leader>gwip", "<cmd>!git add . && git commit -m'wip' && git push<CR>", opts)
-map("n", "<leader>gcp", "<cmd>!git add . && git commit -m'$(date +'$F')' && git push<CR>", opts)
+
+map("n", "<leader>gcp", "<cmd>!git add . && git commit -m'" .. os.date("%Y-%m-%d") .. "' && git push<CR>", opts)
 map("n", "<leader>gp", "<cmd>G pull<cr>", opts)
 map("n", "<leader>gP", "<cmd>G push<cr>", opts)
 
