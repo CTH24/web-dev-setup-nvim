@@ -1,5 +1,11 @@
 # web-dev-setup-nvim
 
+## Open a File
+
+## Navigate in File
+
+## Search Replace
+
 ## Keymaps
 
 | Keymap   | Command                |

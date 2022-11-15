@@ -46,6 +46,9 @@ map("n", "<leader>-", "<C-x>", opts)
 
 map("i", "<C-c>", "<ESC>", opts)
 map("i", "jj", "<ESC><cmd>lua vim.lsp.buf.format { async = true}<cr>", opts)
+map("n", "<C-d>", "<C-d>zz", opts)
+map("n", "<C-u>", "<C-u>zz", opts)
+map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 
 map("n", "<leader>w", "<cmd>w<CR>", opts)
 map("n", "<leader>q", "<cmd>q<CR>", opts)
@@ -78,7 +81,6 @@ map("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
 -- Naviagation in File
 map("n", "<leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
-
 map("n", "<leader>gg", "<cmd>Neogit<CR>", opts)
 map("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts)
@@ -87,7 +89,6 @@ map("n", "<leader>gf", "<cmd>G fetch<cr>", opts)
 map("n", "<leader>ga", "<cmd>G add .<cr>", opts)
 map("n", "<leader>gc", "<cmd>G commit<cr>", opts)
 map("n", "<leader>gwip", "<cmd>!git add . && git commit -m'wip' && git push<CR>", opts)
-
 map("n", "<leader>gcp", "<cmd>!git add . && git commit -m'" .. os.date("%Y-%m-%d") .. "' && git push<CR>", opts)
 map("n", "<leader>gp", "<cmd>G pull<cr>", opts)
 map("n", "<leader>gP", "<cmd>G push<cr>", opts)
@@ -102,7 +103,7 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 --  Format Code                                                                -
 --------------------------------------------------------------------------------
 
---map("n", "<leader><leader>", "<cmd>lua vim.lsp.buf.format { async = true}<cr>", opts)
+map("n", "<leader>=", "<cmd>lua vim.lsp.buf.format { async = true}<cr>", opts)
 
 --------------------------------------------------------------------------------
 --  GitHub Toogle AutoSuggestion                                               -

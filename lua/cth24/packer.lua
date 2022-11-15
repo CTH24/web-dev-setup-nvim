@@ -10,6 +10,49 @@ end
 vim.cmd([[packadd packer.nvim]])
 
 packer.startup(function(use)
+    use({
+        "sitiom/nvim-numbertoggle",
+        config = function()
+            require("numbertoggle").setup()
+        end,
+    })
+    use("ggandor/leap.nvim")
+    use({
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "olimorris/neotest-phpunit",
+        },
+    })
+    use({
+        "mfussenegger/nvim-dap",
+        config = function()
+            require("cth24.dap.nvim-dap")
+        end,
+    })
+    use({
+        "theHamsta/nvim-dap-virtual-text",
+        requires = {
+            "mfussenegger/nvim-dap",
+        },
+        config = function()
+            require("cth24.dap.nvim-dap-virtual-text")
+        end,
+    })
+    use({
+        "rcarriga/nvim-dap-ui",
+        requires = {
+            "mfussenegger/nvim-dap",
+        },
+        config = function()
+            require("cth24.dap.nvim-dap-ui")
+        end,
+    })
+    use({
+        "mattn/emmet-vim",
+    })
     --------------------------------------------------------------------------------
     -- Packer
     --------------------------------------------------------------------------------
